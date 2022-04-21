@@ -2,6 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'dashboard.dart';
+
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
   static const String id = 'login_screen';
@@ -108,12 +110,12 @@ class _LoginScreenState extends State<LoginScreen> {
                                 email: emailid, password: passwd);
 
                             if (user != null) {
-                              // final SharedPreferences sharedPreferences =
-                              //     await SharedPreferences.getInstance();
-                              // sharedPreferences.setInt('Login_status', 1);
+                              final SharedPreferences sharedPreferences =
+                                  await SharedPreferences.getInstance();
+                              sharedPreferences.setInt('Login_status', 1);
                               print(emailid);
                               print(passwd);
-                              // Navigator.pushNamed(context, DashBoard.id);
+                              Navigator.pushNamed(context, DashBoard.id);
                             }
                           } catch (e) {
                             print(e);
