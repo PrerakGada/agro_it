@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 
 import 'screens/Loading.dart';
 import 'screens/LoginScreen.dart';
+import 'screens/SignUpScreen.dart';
 import 'screens/welcome.dart';
 import 'screens/dashboard.dart';
 
@@ -28,6 +29,7 @@ class MyApp extends StatelessWidget {
         LoginScreen.id: (context) => LoginScreen(),
         WelcomeScreen.id: (context) => WelcomeScreen(),
         DashBoard.id: (context) => DashBoard(),
+        SignUpScreen.id: (context) => SignUpScreen(),
       },
     );
   }

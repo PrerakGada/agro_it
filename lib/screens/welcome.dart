@@ -1,3 +1,4 @@
+import 'package:agro_it/screens/SignUpScreen.dart';
 import 'package:flutter/material.dart';
 
 import 'LoginScreen.dart';
@@ -69,7 +70,7 @@ class _LoginScreenState extends State<WelcomeScreen> {
                                   color: Colors.white
                               )),
                           onPressed: () {
-                            // Navigator.pushNamed(context,SignUpScreen.id);
+                            Navigator.pushNamed(context,SignUpScreen.id);
                           },
                         ),
                       ),
