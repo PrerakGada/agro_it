@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:hexcolor/hexcolor.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../Modules/details.dart';
 import '../weather/weather_services.dart';
 import '../weather/weathermodule.dart';
+import 'LoginScreen.dart';
 
 String? w1;
 
@@ -39,10 +41,11 @@ class _DashBoardState extends State<DashBoard> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+          // scaffoldBackgroundColor: HexColor('53B466')),
           scaffoldBackgroundColor: const Color.fromRGBO(230, 255, 255, 1)),
       home: Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.green,
+          backgroundColor: HexColor('53B466'),
           title: const Text("AgroIT"),
           actions: [
             ElevatedButton.icon(
@@ -59,7 +62,7 @@ class _DashBoardState extends State<DashBoard> {
                   msg: "Logged Out Successfully",
                   toastLength: Toast.LENGTH_SHORT,
                 );
-                // Navigator.pushNamed(context, LoginScreen.id);
+                Navigator.pushNamed(context, LoginScreen.id);
               },
               label: Text("Logout"),
               icon: Icon(Icons.logout),
@@ -94,7 +97,7 @@ class _DashBoardState extends State<DashBoard> {
                 if (_response != null)
                   Card(
                       elevation: 20,
-                      color: Colors.green,
+                      color: HexColor('53B466'),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20),
                       ),
@@ -116,6 +119,7 @@ class _DashBoardState extends State<DashBoard> {
                                     style: const TextStyle(
                                         fontSize: 46,
                                         fontWeight: FontWeight.bold),
+                                    
                                   ),
                                   Image.network(_response!.iconUrl,
                                       color: Colors.black),
@@ -152,28 +156,44 @@ class _DashBoardState extends State<DashBoard> {
                         },
                         child: Card(
                             elevation: 20,
-                            color: Colors.white,
+                            color: HexColor('53B466'),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(20),
                             ),
-                            child: SizedBox(
-                              width: 160,
-                              height: 160,
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Column(
-                                  children: const [
-                                    Text(
-                                      "Field Condition",
-                                      style: TextStyle(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    Image(
-                                      image: AssetImage('assets/1.png'),
-                                      height: 100,
-                                    ),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                gradient: LinearGradient(
+                                  begin: Alignment.topCenter,
+                                  end: Alignment(0, 1),
+                                  // 10% of the width, so there are ten blinds.
+                                  colors: <HexColor>[
+                                    HexColor('56ab2f'),
+                                    HexColor('a8e063'),
                                   ],
+                                  // red to yellow
+                                ),
+                              ),
+                              child: SizedBox(
+                                width: 160,
+                                height: 160,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Column(
+                                    children: const [
+                                      Text(
+                                        "Field Condition",
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      Image(
+                                        image: AssetImage('assets/1.png'),
+                                        height: 100,
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                             )),
@@ -185,28 +205,44 @@ class _DashBoardState extends State<DashBoard> {
                         },
                         child: Card(
                             elevation: 20,
-                            color: const Color.fromRGBO(255, 230, 255, 1),
+                            color: HexColor('53B466'),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(20),
                             ),
-                            child: SizedBox(
-                              width: 160,
-                              height: 160,
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Column(
-                                  children: const [
-                                    Text(
-                                      "Water Irrigation",
-                                      style: TextStyle(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    Image(
-                                      image: AssetImage('assets/3.png'),
-                                      height: 100,
-                                    ),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                gradient: LinearGradient(
+                                  begin: Alignment.topCenter,
+                                  end: Alignment(0, 1),
+                                  // 10% of the width, so there are ten blinds.
+                                  colors: <HexColor>[
+                                    HexColor('56ab2f'),
+                                    HexColor('a8e063'),
                                   ],
+                                  // red to yellow
+                                ),
+                              ),
+                              child: SizedBox(
+                                width: 160,
+                                height: 160,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Column(
+                                    children: const [
+                                      Text(
+                                        "Water Irrigation",
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      Image(
+                                        image: AssetImage('assets/3.png'),
+                                        height: 100,
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                             )),
@@ -224,28 +260,44 @@ class _DashBoardState extends State<DashBoard> {
                         },
                         child: Card(
                             elevation: 20,
-                            color: Color.fromRGBO(204, 238, 255, 1),
+                            color: HexColor('53B466'),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(20),
                             ),
-                            child: SizedBox(
-                              width: 160,
-                              height: 160,
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Column(
-                                  children: const [
-                                    Text(
-                                      "Fertilization",
-                                      style: TextStyle(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    Image(
-                                      image: AssetImage('assets/5.png'),
-                                      height: 100,
-                                    ),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                gradient: LinearGradient(
+                                  begin: Alignment.topCenter,
+                                  end: Alignment(0, 1),
+                                  // 10% of the width, so there are ten blinds.
+                                  colors: <HexColor>[
+                                    HexColor('56ab2f'),
+                                    HexColor('a8e063'),
                                   ],
+                                  // red to yellow
+                                ),
+                              ),
+                              child: SizedBox(
+                                width: 160,
+                                height: 160,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Column(
+                                    children: const [
+                                      Text(
+                                        "Fertilization",
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      Image(
+                                        image: AssetImage('assets/5.png'),
+                                        height: 100,
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                             )),
@@ -258,28 +310,44 @@ class _DashBoardState extends State<DashBoard> {
                           },
                           child: Card(
                               elevation: 20,
-                              color: const Color.fromRGBO(204, 204, 255, 1),
+                              color: HexColor('53B466'),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(20),
                               ),
-                              child: SizedBox(
-                                width: 160,
-                                height: 160,
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Column(
-                                    children: const [
-                                      Text(
-                                        "Pesticides",
-                                        style: TextStyle(
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      Image(
-                                        image: AssetImage('assets/4.png'),
-                                        height: 100,
-                                      ),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(20),
+                                  gradient: LinearGradient(
+                                    begin: Alignment.topCenter,
+                                    end: Alignment(0, 1),
+                                    // 10% of the width, so there are ten blinds.
+                                    colors: <HexColor>[
+                                      HexColor('56ab2f'),
+                                      HexColor('a8e063'),
                                     ],
+                                    // red to yellow
+                                  ),
+                                ),
+                                child: SizedBox(
+                                  width: 160,
+                                  height: 160,
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Column(
+                                      children: const [
+                                        Text(
+                                          "Pesticides",
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                        Image(
+                                          image: AssetImage('assets/4.png'),
+                                          height: 100,
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               )),
