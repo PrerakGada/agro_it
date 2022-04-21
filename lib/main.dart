@@ -1,8 +1,11 @@
+
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 import 'screens/Loading.dart';
 import 'screens/LoginScreen.dart';
+import 'screens/welcome.dart';
 import 'screens/dashboard.dart';
 
 void main() async {
@@ -23,6 +26,7 @@ class MyApp extends StatelessWidget {
       routes: {
         Loading.id: (context) => Loading(),
         LoginScreen.id: (context) => LoginScreen(),
+        WelcomeScreen.id: (context) => WelcomeScreen(),
         DashBoard.id: (context) => DashBoard(),
       },
     );
