@@ -62,8 +62,8 @@ class _LoadingState extends State<Loading> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text("Kisan",style: GoogleFonts.sigmarOne(color: e1.secondarycolor(),fontSize: 60), ),
-                        Text("Seva",style: GoogleFonts.sigmarOne(color: e1.primarycolor(),fontSize:40), ),
+                        Text("Agro",style: GoogleFonts.sigmarOne(color: e1.secondarycolor(),fontSize: 60), ),
+                        Text("IT",style: GoogleFonts.sigmarOne(color: e1.primarycolor(),fontSize:40), ),
                       ],
                     ),
                     Text("A helping hand to Farmers"),
