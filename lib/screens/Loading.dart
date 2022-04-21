@@ -6,6 +6,7 @@ import 'dart:async';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../modules/details.dart';
+import 'LoginScreen.dart';
 
 class Loading extends StatefulWidget {
   const Loading({Key? key}) : super(key: key);
@@ -35,6 +36,7 @@ class _LoadingState extends State<Loading> {
     final SharedPreferences sharedPreferences =
         await SharedPreferences.getInstance();
     int? log = sharedPreferences.getInt('Login_status') ?? 0;
+    Navigator.pushReplacementNamed(context,LoginScreen.id);
     // log == 0 ?
     // Navigator.pushReplacementNamed(context,LoginScreen1.id) :
     // Navigator.pushReplacementNamed(context,DashBoard.id);
