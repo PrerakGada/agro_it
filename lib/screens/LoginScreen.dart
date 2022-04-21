@@ -21,14 +21,14 @@ class _LoginScreenState extends State<LoginScreen> {
       debugShowCheckedModeBanner: false,
       title: 'Login',
       theme: ThemeData(
-        primarySwatch: Colors.deepPurple,
+        primarySwatch: Colors.green,
       ),
       home: Scaffold(
         // key: _scaffoldKey,
         appBar: AppBar(
           title: const Text('Login'),
         ),
-        backgroundColor: const Color(0xFFffffff),
+        backgroundColor: const Color(0xffffffff),
         body: Center(
           child: Container(
             height: 300,
@@ -39,11 +39,11 @@ class _LoginScreenState extends State<LoginScreen> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   const Text(
-                    "Farmer",
+                    "LOGIN",
                     style: TextStyle(fontSize: 20, color: Colors.black),
                   ),
                   const SizedBox(
-                    height: 8,
+                    height: 20,
                   ),
                   TextField(
                     keyboardType: TextInputType.emailAddress,
@@ -55,14 +55,16 @@ class _LoginScreenState extends State<LoginScreen> {
                     decoration: const InputDecoration(
                       focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.black, width: 1.0),
+                        borderRadius: BorderRadius.only(topRight: Radius.circular(30.0),bottomLeft: Radius.circular(30.0))
                       ),
                       enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.black, width: 1.0),
+                        borderRadius: BorderRadius.only(topRight: Radius.circular(30.0),bottomLeft: Radius.circular(30.0))
                       ),
                       hintText: 'Enter you Email',
                     ),
                   ),
-                  const SizedBox(height: 25),
+                  const SizedBox(height: 30),
                   TextField(
                     // controller: password,
                     onChanged: (value) {
@@ -75,9 +77,11 @@ class _LoginScreenState extends State<LoginScreen> {
                         const InputDecoration(
                       focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.black, width: 1.0),
+                        borderRadius: BorderRadius.only(topRight: Radius.circular(30.0),bottomLeft: Radius.circular(30.0))
                       ),
                       enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.black, width: 1.0),
+                        borderRadius: BorderRadius.only(topRight: Radius.circular(30.0),bottomLeft: Radius.circular(30.0))
                       ),
                       hintText: 'Enter you password',
                     ),
@@ -87,8 +91,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     padding: const EdgeInsets.symmetric(vertical: 16.0),
                     child: Material(
                       elevation: 5.0,
-                      color: Colors.red,
-                      borderRadius: BorderRadius.circular(30.0),
+                      color: Colors.green,
+                      // borderRadius: BorderRadius.circular(30.0),
+                      borderRadius: BorderRadius.only(topRight: Radius.circular(30.0),bottomLeft: Radius.circular(30.0)),
                       child: MaterialButton(
                         // onPressed: () {
                         //   //Navigator.pushNamed(context, Loading.id);
@@ -115,7 +120,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           }
                         },
                         minWidth: 200.0,
-                        height: 42.0,
+                        height: 30.0,
                         child: const Text(
                           'Log In',
                           style: TextStyle(color: Colors.white),
