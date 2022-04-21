@@ -1,3 +1,8 @@
+import 'package:agro_it/screens/FertilizationScreen.dart';
+import 'package:agro_it/screens/Pesticides.dart';
+import 'package:agro_it/screens/ProfileScreen.dart';
+import 'package:agro_it/screens/WaterIrrigationScreen.dart';
+import 'package:agro_it/screens/fieldConditionScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:hexcolor/hexcolor.dart';
@@ -45,27 +50,31 @@ class _DashBoardState extends State<DashBoard> {
           scaffoldBackgroundColor: const Color.fromRGBO(230, 255, 255, 1)),
       home: Scaffold(
         appBar: AppBar(
+          leading: IconButton(
+            icon: Icon(Icons.logout),
+            onPressed: () async {
+              final SharedPreferences sharedPreferences =
+                  await SharedPreferences.getInstance();
+              sharedPreferences.setInt('Login_status', 0);
+              Fluttertoast.showToast(
+                msg: "Logged Out Successfully",
+                toastLength: Toast.LENGTH_SHORT,
+              );
+              Navigator.popAndPushNamed(context, LoginScreen.id);
+            },
+          ),
           backgroundColor: HexColor('53B466'),
-          title: const Text("AgroIT"),
+          title: Center(child: Text("AgroIT")),
           actions: [
-            ElevatedButton.icon(
-              style: ElevatedButton.styleFrom(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30.0),
-                ),
-              ),
-              onPressed: () async {
-                final SharedPreferences sharedPreferences =
-                    await SharedPreferences.getInstance();
-                sharedPreferences.setInt('Login_status', 0);
-                Fluttertoast.showToast(
-                  msg: "Logged Out Successfully",
-                  toastLength: Toast.LENGTH_SHORT,
-                );
-                Navigator.pushNamed(context, LoginScreen.id);
+            IconButton(
+              onPressed: () {},
+              icon: Icon(Icons.notifications),
+            ),
+            IconButton(
+              onPressed: () {
+                Navigator.pushNamed(context, ProfileScreen.id);
               },
-              label: Text("Logout"),
-              icon: Icon(Icons.logout),
+              icon: Icon(Icons.account_circle_outlined),
             ),
           ],
         ),
@@ -75,24 +84,24 @@ class _DashBoardState extends State<DashBoard> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                const Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Text(
-                    "Hello, ",
-                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-                  ),
-                ),
-                const Padding(
-                  padding: EdgeInsets.only(left: 8.0, right: 8.0),
-                  child: Text(
-                    "Farmer Name",
-                    style: TextStyle(
-                      fontSize: 25,
-                    ),
-                  ),
-                ),
+                // const Padding(
+                //   padding: EdgeInsets.all(8.0),
+                //   child: Text(
+                //     "Hello, ",
+                //     style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                //   ),
+                // ),
+                // const Padding(
+                //   padding: EdgeInsets.only(left: 8.0, right: 8.0),
+                //   child: Text(
+                //     "Farmer Name",
+                //     style: TextStyle(
+                //       fontSize: 25,
+                //     ),
+                //   ),
+                // ),
                 const SizedBox(
-                  height: 10,
+                  height: 20,
                 ),
                 if (_response != null)
                   Card(
@@ -119,7 +128,6 @@ class _DashBoardState extends State<DashBoard> {
                                     style: const TextStyle(
                                         fontSize: 46,
                                         fontWeight: FontWeight.bold),
-                                    
                                   ),
                                   Image.network(_response!.iconUrl,
                                       color: Colors.black),
@@ -146,62 +154,67 @@ class _DashBoardState extends State<DashBoard> {
                 Padding(
                   padding: const EdgeInsets.all(4.0),
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       GestureDetector(
                         onTap: () {
-                          w1 = '${_response?.tempinfo.temp}\u2109'.toString();
+                          // w1 = '${_response?.tempinfo.temp}\u2109'.toString();
                           // Navigator.of(context).push(
                           //   MaterialPageRoute(builder: (context) => Humidity(w1)),
                           // );
+                          Navigator.pushNamed(context, FieldConditionScreen.id);
                         },
                         child: Card(
-                            elevation: 20,
-                            color: HexColor('53B466'),
-                            shape: RoundedRectangleBorder(
+                          elevation: 20,
+                          color: HexColor('53B466'),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: Container(
+                            decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
+                              gradient: LinearGradient(
+                                begin: Alignment.topCenter,
+                                end: Alignment(0, 1),
+                                // 10% of the width, so there are ten blinds.
+                                colors: <HexColor>[
+                                  HexColor('56ab2f'),
+                                  HexColor('a8e063'),
+                                ],
+                                // red to yellow
+                              ),
                             ),
-                            child: Container(
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(20),
-                                gradient: LinearGradient(
-                                  begin: Alignment.topCenter,
-                                  end: Alignment(0, 1),
-                                  // 10% of the width, so there are ten blinds.
-                                  colors: <HexColor>[
-                                    HexColor('56ab2f'),
-                                    HexColor('a8e063'),
-                                  ],
-                                  // red to yellow
-                                ),
-                              ),
-                              child: SizedBox(
-                                width: 160,
-                                height: 160,
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Column(
-                                    children: const [
-                                      Text(
-                                        "Field Condition",
-                                        style: TextStyle(
+                            child: SizedBox(
+                              width: e1.width(context) / 2.4,
+                              // width: 160,
+                              height: 160,
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Column(
+                                  children: const [
+                                    Text(
+                                      "Field Condition",
+                                      style: TextStyle(
                                           color: Colors.white,
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      Image(
-                                        image: AssetImage('assets/1.png'),
-                                        height: 100,
-                                      ),
-                                    ],
-                                  ),
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    Image(
+                                      image: AssetImage('assets/1.png'),
+                                      height: 100,
+                                    ),
+                                  ],
                                 ),
                               ),
-                            )),
+                            ),
+                          ),
+                        ),
                       ),
                       const SizedBox(width: 8),
                       GestureDetector(
                         onTap: () {
-                          // Navigator.pushNamed(context, WaterIrrigation.id);
+                          Navigator.pushNamed(
+                              context, WaterIrrigationScreen.id);
                         },
                         child: Card(
                             elevation: 20,
@@ -224,7 +237,8 @@ class _DashBoardState extends State<DashBoard> {
                                 ),
                               ),
                               child: SizedBox(
-                                width: 160,
+                                // width: 160,
+                                width: e1.width(context) / 2.4,
                                 height: 160,
                                 child: Padding(
                                   padding: const EdgeInsets.all(8.0),
@@ -233,7 +247,7 @@ class _DashBoardState extends State<DashBoard> {
                                       Text(
                                         "Water Irrigation",
                                         style: TextStyle(
-                                          color: Colors.white,
+                                            color: Colors.white,
                                             fontSize: 16,
                                             fontWeight: FontWeight.bold),
                                       ),
@@ -253,10 +267,11 @@ class _DashBoardState extends State<DashBoard> {
                 Padding(
                   padding: const EdgeInsets.all(4.0),
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       GestureDetector(
                         onTap: () {
-                          // Navigator.pushNamed(context, FetilizerSuggestion.id);
+                          Navigator.pushNamed(context, FertilizationScreen.id);
                         },
                         child: Card(
                             elevation: 20,
@@ -279,7 +294,8 @@ class _DashBoardState extends State<DashBoard> {
                                 ),
                               ),
                               child: SizedBox(
-                                width: 160,
+                                // width: 160,
+                                width: e1.width(context) / 2.4,
                                 height: 160,
                                 child: Padding(
                                   padding: const EdgeInsets.all(8.0),
@@ -288,7 +304,7 @@ class _DashBoardState extends State<DashBoard> {
                                       Text(
                                         "Fertilization",
                                         style: TextStyle(
-                                          color: Colors.white,
+                                            color: Colors.white,
                                             fontSize: 16,
                                             fontWeight: FontWeight.bold),
                                       ),
@@ -306,7 +322,7 @@ class _DashBoardState extends State<DashBoard> {
                       Align(
                         child: GestureDetector(
                           onTap: () {
-                            // Navigator.pushNamed(context, ScheduleP.id);
+                            Navigator.pushNamed(context, Pesticides.id);
                           },
                           child: Card(
                               elevation: 20,
@@ -329,7 +345,8 @@ class _DashBoardState extends State<DashBoard> {
                                   ),
                                 ),
                                 child: SizedBox(
-                                  width: 160,
+                                  // width: 160,
+                                  width: e1.width(context) / 2.4,
                                   height: 160,
                                   child: Padding(
                                     padding: const EdgeInsets.all(8.0),
@@ -338,7 +355,7 @@ class _DashBoardState extends State<DashBoard> {
                                         Text(
                                           "Pesticides",
                                           style: TextStyle(
-                                            color: Colors.white,
+                                              color: Colors.white,
                                               fontSize: 16,
                                               fontWeight: FontWeight.bold),
                                         ),
