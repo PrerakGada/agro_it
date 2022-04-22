@@ -170,6 +170,142 @@ class _FieldConditionScreenState extends State<FieldConditionScreen> {
                     );
                   }),
             ),
+            Padding(
+              padding: const EdgeInsets.all(30),
+              child: StreamBuilder<QuerySnapshot>(
+                  stream: _firestore.collection('sensorData').snapshots(),
+                  builder: (context, snapshot) {
+                    if (!snapshot.hasData) {
+                      return const Center(
+                        child: CircularProgressIndicator(
+                          backgroundColor: Colors.lightBlueAccent,
+                        ),
+                      );
+                    }
+                    final data = snapshot.data!.docs;
+                    final smoke = data[5].get('smokeValue');
+                    return Card(
+                      elevation: 20,
+                      color: HexColor('53B466'),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          gradient: LinearGradient(
+                            begin: Alignment.topCenter,
+                            end: Alignment(0, 1),
+                            // 10% of the width, so there are ten blinds.
+                            colors: <HexColor>[
+                              HexColor('56ab2f'),
+                              HexColor('a8e063'),
+                            ],
+                            // red to yellow
+                          ),
+                        ),
+                        child: SizedBox(
+                          width: e1.width(context) / 1.2,
+                          // width: 160,
+                          height: 100,
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Row(
+                              children: [
+                                Image(
+                                  image: AssetImage('assets/1.png'),
+                                  height: 50,
+                                ),
+                                Text(
+                                  " Fire Detect : ",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 24,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                Text(
+                                  smoke == 0 ? "Safe":"Unsafe",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 24,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    );
+                  }),
+            ),
+            // Padding(
+            //   padding: const EdgeInsets.all(30),
+            //   child: StreamBuilder<QuerySnapshot>(
+            //       stream: _firestore.collection('sensorData').snapshots(),
+            //       builder: (context, snapshot) {
+            //         if (!snapshot.hasData) {
+            //           return const Center(
+            //             child: CircularProgressIndicator(
+            //               backgroundColor: Colors.lightBlueAccent,
+            //             ),
+            //           );
+            //         }
+            //         final data = snapshot.data!.docs;
+            //         final motion = data[3].get('motionSensor');
+            //         return Card(
+            //           elevation: 20,
+            //           color: HexColor('53B466'),
+            //           shape: RoundedRectangleBorder(
+            //             borderRadius: BorderRadius.circular(20),
+            //           ),
+            //           child: Container(
+            //             decoration: BoxDecoration(
+            //               borderRadius: BorderRadius.circular(20),
+            //               gradient: LinearGradient(
+            //                 begin: Alignment.topCenter,
+            //                 end: Alignment(0, 1),
+            //                 // 10% of the width, so there are ten blinds.
+            //                 colors: <HexColor>[
+            //                   HexColor('56ab2f'),
+            //                   HexColor('a8e063'),
+            //                 ],
+            //                 // red to yellow
+            //               ),
+            //             ),
+            //             child: SizedBox(
+            //               width: e1.width(context) / 1.2,
+            //               // width: 160,
+            //               height: 100,
+            //               child: Padding(
+            //                 padding: const EdgeInsets.all(8.0),
+            //                 child: Row(
+            //                   children: [
+            //                     Image(
+            //                       image: AssetImage('assets/1.png'),
+            //                       height: 50,
+            //                     ),
+            //                     Text(
+            //                       " Motion Detect   ",
+            //                       style: TextStyle(
+            //                           color: Colors.white,
+            //                           fontSize: 24,
+            //                           fontWeight: FontWeight.bold),
+            //                     ),
+            //                     Text(
+            //                       motion == 0 ? "Safe":"Unsafe",
+            //                       style: TextStyle(
+            //                           color: Colors.white,
+            //                           fontSize: 24,
+            //                           fontWeight: FontWeight.bold),
+            //                     ),
+            //                   ],
+            //                 ),
+            //               ),
+            //             ),
+            //           ),
+            //         );
+            //       }),
+            // ),
           ],
         ),
       ),
