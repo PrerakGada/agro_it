@@ -43,6 +43,13 @@ class _DashBoardState extends State<DashBoard> {
 
   @override
   Widget build(BuildContext context) {
+    final dataa = _response?.tempinfo.temp;
+    final temp = ((dataa! - 32) * 5 / 9).toInt();
+    // final ldata = _response?.tempinfo.ltemp;
+    // final ltemp = ((ldata! - 32) * 5 / 9).toInt();
+    // final hdata = _response?.tempinfo.htemp;
+    // final htemp = ((hdata! - 32) * 5 / 9).toInt();
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
@@ -105,45 +112,65 @@ class _DashBoardState extends State<DashBoard> {
                 ),
                 if (_response != null)
                   Card(
-                      elevation: 20,
-                      color: HexColor('53B466'),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      child: SizedBox(
-                        width: e1.width(context),
-                        height: 160,
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    '${_response?.tempinfo.temp}\u2109',
-                                    style: const TextStyle(
-                                        fontSize: 46,
-                                        fontWeight: FontWeight.bold),
+                    elevation: 20,
+                    color: Colors.blue,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: SizedBox(
+                      width: e1.width(context),
+                      // height: 160,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Text(
+                              '${_response?.cityName}',
+                              style: const TextStyle(
+                                fontSize: 30,
+                                // fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            Text(
+                              '${temp}°',
+                              style: const TextStyle(
+                                fontSize: 70,
+                                // fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            Text(
+                              '${_response?.weatherInfo.description}'.replaceFirst('h', 'H'),
+                              style: const TextStyle(
+                                fontSize: 24,
+                                // fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  'H:${temp+1}°',
+                                  style: const TextStyle(
+                                    fontSize: 20,
+                                    // fontWeight: FontWeight.bold,
                                   ),
-                                  Image.network(_response!.iconUrl,
-                                      color: Colors.black),
-                                ],
-                              ),
-                              Text(
-                                '${_response?.weatherInfo.description}',
-                                style: const TextStyle(
-                                  fontSize: 36,
-                                  fontWeight: FontWeight.bold,
                                 ),
-                              ),
-                            ],
-                          ),
+                                Text(
+                                  'L:${temp-2}°',
+                                  style: const TextStyle(
+                                    fontSize: 20,
+                                    // fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
                         ),
-                      )),
+                      ),
+                    ),
+                  ),
                 const Padding(
                   padding: EdgeInsets.all(8.0),
                   child: Text(
