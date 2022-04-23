@@ -1,0 +1,19 @@
+{
+	"level" : "collection",
+	"sensorData" : {
+		"level" : "document",
+		"smokeSensor" : {
+			"smokeValue" : "int 0/1"
+		},
+		"motionSensor" : {	
+			"motionValue" : "int 0/1"
+		},	
+		"moistureSensor" : {
+			"moistureValue" : "int 0/1"
+		},	
+		"dhtSensor" : {
+			"temperatureValue" : "int 0-100",
+			"humidityValue" : "int 0-100"
+		}
+	}
+}
