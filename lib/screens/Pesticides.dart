@@ -57,7 +57,7 @@ class PesticidesState extends State<Pesticides> {
                     Text(
                       "Select the Pestisides",
                       style:
-                      TextStyle(fontSize: 18, fontWeight: FontWeight.w300),
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.w300),
                     ),
                     SizedBox(width: 10),
                     DropdownButton(
@@ -164,7 +164,9 @@ class PesticidesState extends State<Pesticides> {
                         )),
                   ],
                 ),
-                SizedBox(height: 10,),
+                SizedBox(
+                  height: 10,
+                ),
                 Row(
                   children: [
                     TextButton(
@@ -187,31 +189,34 @@ class PesticidesState extends State<Pesticides> {
                           Icons.timer,
                           color: Colors.green,
                         )),
-                    Text("${selectedTime.hour}:${selectedTime.minute}",
-                      style: TextStyle(
-                          fontSize: 20
-                      ),
+                    Text(
+                      "${selectedTime.hour}:${selectedTime.minute}",
+                      style: TextStyle(fontSize: 20),
                     ),
                   ],
                 ),
-                SizedBox(height: 20,),
+                SizedBox(
+                  height: 20,
+                ),
                 Center(
                   child: ElevatedButton(
-                      child: Text('Schedule'),
-                      onPressed: ()  {
-                        Navigator.pop(context);
-                        Fluttertoast.showToast(
-                          msg: "Scheduled Successfully",
-                          toastLength: Toast.LENGTH_SHORT,
-                        );
-                      },
-                      style: ElevatedButton.styleFrom(
-                        // background color
-                          primary: Colors.green,
-                          padding: EdgeInsets.symmetric(
-                            horizontal: 50,
-                            vertical: 15,
-                          ))),
+                    child: Text('Schedule'),
+                    onPressed: () {
+                      Navigator.pop(context);
+                      Fluttertoast.showToast(
+                        msg: "Scheduled Successfully",
+                        toastLength: Toast.LENGTH_SHORT,
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      // background color
+                      primary: Colors.green,
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 50,
+                        vertical: 15,
+                      ),
+                    ),
+                  ),
                 ),
               ],
             ),
@@ -228,9 +233,11 @@ class PesticidesState extends State<Pesticides> {
       initialEntryMode: TimePickerEntryMode.dial,
     );
     if (timeOfDay != null && timeOfDay != selectedTime) {
-      setState(() {
-        selectedTime = timeOfDay;
-      });
+      setState(
+        () {
+          selectedTime = timeOfDay;
+        },
+      );
     }
   }
 }

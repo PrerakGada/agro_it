@@ -36,8 +36,8 @@ class _LoginScreenState extends State<WelcomeScreen> {
                       Center(
                         child: ElevatedButton(
 
-                          style: ElevatedButton.styleFrom(shape: new RoundedRectangleBorder(
-                            borderRadius: new BorderRadius.only(topRight: Radius.circular(30.0),bottomLeft: Radius.circular(30.0)),
+                          style: ElevatedButton.styleFrom(shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.only(topRight: Radius.circular(30.0),bottomLeft: Radius.circular(30.0)),
                           ),
                             primary: Colors.green,
                             fixedSize: const Size(200 ,50),
@@ -59,8 +59,8 @@ class _LoginScreenState extends State<WelcomeScreen> {
                       ),
                       Center(
                         child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(shape: new RoundedRectangleBorder(
-                            borderRadius: new BorderRadius.only(topRight: Radius.circular(30.0),bottomLeft: Radius.circular(30.0)),
+                          style: ElevatedButton.styleFrom(shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.only(topRight: Radius.circular(30.0),bottomLeft: Radius.circular(30.0)),
                           ),
                             primary: Colors.green,
                             fixedSize: const Size(200 ,50),

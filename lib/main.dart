@@ -19,6 +19,7 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
+
   const MyApp({Key? key}) : super(key: key);
 
   // This widget is the root of your application.
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: Loading.id,
+      initialRoute: LoginScreen.id,
       routes: {
         Loading.id: (context) => Loading(),
         LoginScreen.id: (context) => LoginScreen(),
